@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dietApp import views
+from rest_framework.authtoken import views as authview
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('user',views.UserCreateView.as_view()),
+    path('token',authview.obtain_auth_token)
 ]
+
+

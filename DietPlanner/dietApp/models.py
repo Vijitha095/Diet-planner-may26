@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 
 
 # Create your models here.
@@ -34,10 +35,12 @@ class Profile(models.Model):
     weight=models.DecimalField(max_digits=5,decimal_places=2,help_text="Weight in KG")
     height=models.DecimalField(max_digits=5,decimal_places=2,help_text="height in meter")
     target_weight=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)
+    duration=models.PositiveIntegerField(validators=[MinValueValidator(1)],null=True,blank=True)
     activity_level=models.CharField(max_length=50,choices=ACTIVITY_LEVEL_CHOICES)
     goal=models.CharField(max_length=30,choices=GOAL_CHOICES)
+    daily_calorie_goal=models.PositiveIntegerField(null=True,blank=True)
     profile_pic=models.ImageField(upload_to="media")
-    bmi=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)
+    bmi=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True,editable=False)
     created_at=models.DateTimeField(auto_now_add=True)
 
     class Meta:

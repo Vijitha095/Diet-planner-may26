@@ -1,0 +1,11 @@
+# api call for register
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+
+{
+    "username":"qwerty",
+    "email":"qwerty@gmail.com",
+    "phone":"9856674565",
+    "password1":"password@123",
+    "password2":"password@123"
+}
